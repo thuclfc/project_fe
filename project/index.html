@@ -37,15 +37,17 @@
 <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
 <script>
     $(document).ready(function () {
-        var length_item=$('.sliders .item').length;
-        var i=1;
+        var item_slider=$('.sliders .item');
+        var length_item=$(item_slider).length;
+        $('.sliders .item:first-child').addClass('active');
         var myvar = function () {
+            var i=$('.sliders .item.active').index();
            interval = setInterval(function () {
-                if(i > length_item){
-                    i = 1;
+                if(i >= length_item){
+                    i = 0;
                 }
                 $('.sliders .item,.pag li').removeClass('active');
-                $('.sliders .item:nth-child('+i+'),.pag li:nth-child('+i+')').addClass('active');
+                $('.sliders .item:eq('+i+'),.pag li:eq('+i+')').addClass('active');
                 i++;
             },3000);
         };
@@ -54,8 +56,6 @@
             $(button).click(function () {
                 clearInterval(interval);
                 $('.sliders .item.active,.pag li.active').next().addClass('active').prevAll().removeClass('active');
-                var item_active=$('.sliders .item.active').index();
-                $('.pag li:eq('+item_active+')').addClass('active');
                 myvar();
             });
         }
@@ -72,13 +72,14 @@
         for(k=1; k<=length_item; k++){
             $('.pag').append('<li><a href="#item'+k+'">'+k+'</a></li>');
         }
-        $('.sliders .item:first-child,.pag li:nth-child(1)').addClass('active');
+        $('.pag li:nth-child(1)').addClass('active');
         $('.pag li').click(function(){
-            clearInterval(myvar);
+            clearInterval(interval);
            var index_li=$(this).index();
            $('.sliders .item,.pag li').removeClass('active');
            $(this).addClass('active');
            $('.sliders .item:eq('+index_li+')').addClass('active');
+           myvar();
         });
 
     });
