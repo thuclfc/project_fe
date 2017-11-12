@@ -21,7 +21,7 @@
 
 .nav {
   display: block;
-  color: #000; }
+  color: #c00; }
 
 ul.pag {
   display: flex;
@@ -34,7 +34,7 @@ ul.pag {
     color: #000;
     cursor: pointer; }
   ul.pag li.active a {
-    color: #fffc00; }
+    color: #c00; }
 
 @keyframes imageAnimation {
   0% {
