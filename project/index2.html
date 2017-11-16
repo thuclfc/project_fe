@@ -42,6 +42,8 @@
         $('.sliders .item:first-child').addClass('active');
         var item=$('.sliders .item');
         var length_item=$(item).length;
+        var width_slider=length_item*$('.box-slider').width();
+        $('.sliders').css('width',width_slider);
         var item_width=$(item).width();
         var myvar = function () {
             var x=$('.sliders .item.active').index()+1;
@@ -72,7 +74,7 @@
                 }
                 $(".sliders").css({"transform":"translateX("+-item_next+"px)"});
                 $('.sliders .item.active,.pag li.active').next().addClass('active').prevAll().removeClass('active');
-                myvar();
+
             });
         }
         function preveSlide(button) {

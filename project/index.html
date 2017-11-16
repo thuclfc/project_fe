@@ -27,7 +27,15 @@
             <div class="item">
                 <img src="assets/images/6.jpg" width="600" alt="">
             </div>
-
+            <div class="item">
+                <img src="assets/images/3.jpg" width="600" alt="">
+            </div>
+            <div class="item">
+                <img src="assets/images/4.jpg" width="600" alt="">
+            </div>
+            <div class="item">
+                <img src="assets/images/3.jpg" width="600" alt="">
+            </div>
         </div>
         <ul class="pag"></ul>
         <div class="nav">
@@ -38,27 +46,30 @@
 </div>
 <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
 <script>
-    /*$(document).ready(function () {
-        $('.sliders .item:first-child').addClass('active');
+    $(document).ready(function () {
+        $('.sliders .item:nth-child(3)').addClass('active');
         var item=$('.sliders .item');
         var length_item=$(item).length;
+        var width_slider=length_item*$('.box-slider .item').width();
+        $('.sliders').css('width',width_slider);
         var item_width=$(item).width();
         var myvar = function () {
             var x=$('.sliders .item.active').index()+1;
             var item_ac=$('.sliders .item.active').index();
-            var i=(item_ac+1)*item_width;
+            var i=(item_ac-1)*item_width;
             interval = setInterval(function () {
-                if(i >= item_width*length_item){
+                if(i >= (item_width*length_item)/3){
                     i = 0;
                 }
                 if(x >= length_item){
                     x=0;
                 }
+                var y=x+3;
                 $('.sliders .item,.pag li').removeClass('active');
-                $('.sliders .item:eq('+x+'),.pag li:eq('+x+')').addClass('active');
-                $(".sliders").css({"transform":"translateX("+-i+"px)"});
+                $('.sliders .item:nth-child('+y+'),.pag li:nth-child('+y+')').addClass('active');
+                $(".sliders").css({"transform":"translateX("+-i*3+"px)"});
                 i +=item_width;
-                x++;
+                x+=3;
             },3000);
         };
         myvar();
@@ -67,25 +78,23 @@
                 clearInterval(interval);
                 var item_active=$('.sliders .item.active').index();
                 var item_next=(item_active+1)*item_width;
-                if(item_next >= item_width*length_item){
-                    item_next = (item_width*length_item)-item_width;
+                if(item_next >= (item_width*length_item)){
+                    item_next = (item_width*length_item)-item_width*3;
                 }
                 $(".sliders").css({"transform":"translateX("+-item_next+"px)"});
-                $('.sliders .item.active,.pag li.active').next().addClass('active').prevAll().removeClass('active');
-                myvar();
+                $('.sliders .item:nth-child('+(item_active+3)+'),.pag li:nth-child('+(item_active+3)+')').next().addClass('active').prevAll().removeClass('active');
+
             });
         }
         function preveSlide(button) {
             $(button).click(function () {
                 clearInterval(interval);
                 var item_active=$('.sliders .item.active').index();
-                var item_next=(item_active-1)*item_width;
-                if(item_active==0){
-                    item_next=0;
-                }
+                var item_next=((item_active-2)*item_width) - (item_width*3);
+
                 $(".sliders").css({"transform":"translateX("+-item_next+"px)"});
-                $('.sliders .item.active,.pag li.active').prev().addClass('active').nextAll().removeClass('active');
-                myvar();
+                $('.sliders .item:nth-child('+(item_active-1)+'),.pag li:nth-child('+(item_active)+')').prev().addClass('active').nextAll().removeClass('active');
+
             });
         }
         nextSlide('a.next'); preveSlide('a.prev');
@@ -105,7 +114,7 @@
             $(".sliders").css({"transform":"translateX("+-xt+"px)"});
             myvar();
         });
-    });*/
+    });
 </script>
 </body>
 </html>

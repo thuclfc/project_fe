@@ -1,6 +1,7 @@
 * {
   margin: 0;
-  padding: 0; }
+  padding: 0;
+  box-sizing: border-box; }
 
 .box-slider {
   width: 600px;
@@ -15,7 +16,7 @@
   transition: 1s;
   box-sizing: border-box; }
   .sliders .item {
-    width: 300px;
+    width: 301px;
     height: 100%;
     display: block;
     background: #ccc;
