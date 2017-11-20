@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="wrapper">
+    <div class="slider">
+        <div class="item1">1</div>
+        <div class="item2">2</div>
+        <div class="item3">3</div>
+        <a href="javascript:void(0)" class="btn">btn</a>
+    </div>
+</div>
+<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script>
+    $(document).ready(function () {
+       var item=$('.slider .item');
+       $('.btn').click(function () {
+          $(item +':nth-child(1)').css('display','none');
+       });
+    });
+</script>
+</body>
+</html>
