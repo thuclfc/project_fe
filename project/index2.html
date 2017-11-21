@@ -89,7 +89,8 @@
         });
         var k=0;
         for(k=1; k<=length_slider; k++){
-            $('.pag').append('<li><a href="#item'+k+'">'+k+'</a></li>');
+            var data_img=$('.sliders .item:nth-child('+k+') img').attr('src');
+            $('.pag').append('<li><a href="#item'+k+'"><img src="'+data_img+'" width="200" height="100"></a></li>');
         }
         $('.pag li:nth-child(1)').addClass('active');
         $(pag).click(function () {
