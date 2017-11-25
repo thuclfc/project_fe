@@ -4,9 +4,9 @@
     $password=addslashes($_POST['password']);
     $sql_query=mysqli_query($conn,"select HoTen, email, password from members where email='{$email}'");
     $member=mysqli_fetch_array($sql_query);
-    if(mysqli_num_rows($sql_query)==0)
+    if(empty($member[1]) && empty($member[2]))
     {
-        print "Ten truy cap khong ton tai. <a href='javascript:history.go(-1)'>Quay lai</a>";
+        print "Email hoặc mật khẩu không đúng. <a href='javascript:history.go(-1)'>Quay lai</a>";
         exit;
     }
     if($password !=$member['password'])
@@ -27,9 +27,9 @@ else
 {
     print <<<EOF
     <form action="login.php?act=do" method="post" class="login">
-    <label>Email: </label> <input type="text" name="email" value="">
-    <label>Password: </label> <input type="password" name="password" value="">
-    <input type="submit" name="submit" value="Dang Nhap">
+        <label>Email: </label> <input type="text" name="email" value="">
+        <label>Password: </label> <input type="password" name="password" value="">
+        <input type="submit" name="submit" value="Đăng nhập">
     </form>
 EOF;
 }

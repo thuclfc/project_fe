@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <?php
 	$sql_sever = "localhost";
 	$sql_user = "root";

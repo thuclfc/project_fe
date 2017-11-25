@@ -8,7 +8,7 @@ $u_member = $_SESSION['HoTen'];
 <html dir="ltr" lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Thế giới đồ gỗ</title>
+    <title>Cửa hàng thời trang</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, , initial-scale=1.0">
     <meta name="description" content="" />
     <link href="image/favicon.png" rel=" shortcut icon" />
@@ -17,7 +17,6 @@ $u_member = $_SESSION['HoTen'];
     <link rel="stylesheet" type="text/css" href="css/stylesheet.css" />
     <link href="css/font-awesome.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" type="text/css" href="css/jquery.fancybox-1.3.4.css" media="screen" />
-    <link href='//fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900' rel='stylesheet' type='text/css'/>
 </head>
 <body class="common-home">
 <div class="wrapper">
@@ -49,7 +48,7 @@ $u_member = $_SESSION['HoTen'];
                 <div class="col-sm-12">
                     <div id="logo"><img src="" /></div>
                 </div>
-                <div id="logo"><img src="image/logo.png" title="Furniture store" alt="Furniture store" /></div>
+                <div id="logo"><a href="index.php"><img src="image/logo.png" title="Fashion store" alt="Fashion" /></a></div>
                 <div id="search">
                     <div class="inner">
 
@@ -58,7 +57,7 @@ $u_member = $_SESSION['HoTen'];
                                 <input name="search" type="text" value="<?php echo $_POST['search']; ?>" size="50" placeholder="Tìm kiếm sản phẩm" />
                             </label>
                             <label>
-                                <input type="submit" name="button" id="button" value=" TÌM KIẾM " />
+                                <input type="submit" name="button" id="button" value="TÌM KIẾM" />
                             </label>
 
                         </form>
@@ -88,11 +87,9 @@ $u_member = $_SESSION['HoTen'];
                                 <div class="sf-mega">
                                     <ul class="sf-mega-section">
                                         <li class="screenshot1">
-                                            <a href="danhmucsp.php/phongvesinh.php">Phòng vệ sinh </a>
+                                            <a href="/thoi-trang-dong.php">Thời trang đông</a>
                                         </li>
-                                        <li> <a class="screenshot1"  href="danhmucsp.php/phongngu.php">Phòng ngủ</a></li>
-                                        <li> <a class="screenshot1"  href="danhmucsp.php/phongkhach.php">Phòng khách </a> </li>
-                                        <li><a class="screenshot1"  href="danhmucsp.php/phonglamviec.php">Phòng làm việc </a></li>
+                                        <li> <a class="screenshot1"  href="/thoi-trang-he.php">Thời trang hè</a></li>
                                     </ul>
                                 </div>
                             </li>

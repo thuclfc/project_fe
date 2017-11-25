@@ -1,5 +1,5 @@
 <?php include ('./header.php')?>
-<style>
+    <style>
     form{
         width:500px;
         margin:30px auto;
@@ -40,7 +40,6 @@
                             &raquo; <a href="lienhe.php">Liên hệ</a>
                         </div>
                         <h1>Thông tin liên hệ</h1>
-                        <h2 style="display:none">Our Location</h2>
                         <div class="contact-info">
                             <div class="content row">
                                 <div class="map-left col-sm-6">
@@ -60,7 +59,6 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="content contact-f form-horizontal">
                             <!--<h2>Contact Form</h2>-->
                             <div class="form-group">
@@ -73,6 +71,19 @@
                                     $content=trim($_POST['content']);
                                     $errors=array();
                                     $output = '';
+                                    $messages=null;
+
+                                    /*if (empty($_POST['name'])){
+                                        $name=false;
+                                        $messages .="<p>Bạn chưa nhập tên</p>";
+                                    }else{
+                                        $name=addslashes($_POST['name']);
+                                    }
+
+                                    if(empty($_POST['email'])){
+                                        $email=false;
+                                        $messages .="<p>Bạn chưa nhập email</p>";
+                                    }*/
 
                                     if(strlen($name)==0)
                                         array_push($errors,"");
@@ -81,8 +92,12 @@
                                     if(strlen($content)==0)
                                         array_push($errors,"");
 
+                                    if(count($errors)>0){
+                                        print "<p style='text-align: center; color: #c00; margin-left: 90px;'>Bạn phải điền đầy đủ các thông tin bên dưới để gửi liên hệ</p>";
+                                    }
+
                                     if(count($errors)==0){
-                                        $query_insert=mysql_query("Insert into lienhe (Date, Hoten, email, content) values(NOW(),'$name','$email','$content')");
+                                        $query_insert=mysqli_query($conn,"Insert into lienhe (Date, Hoten, email, content) values(NOW(),'$name','$email','$content')");
                                         if($query_insert){
                                             print "<p>Cảm ơn bạn đã đóng góp ý kiến. Chúng tôi sẽ phản hồi trong thời gian sớm nhất.<a href='index.php'>Quay lai</a></p>";
                                             exit();
@@ -91,7 +106,6 @@
                                             exit();
                                         }
                                     }
-
                                 }
                                 ?>
                                 <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" id="lienhe">
@@ -103,7 +117,6 @@
                                     <textarea name="content" rows="7" style="width: 350px;"></textarea>
                                     <input type="submit" name="submit" value="Gửi" />
                                 </form>
-
                             </div>
                         </div>
                     </div>
@@ -111,28 +124,4 @@
             </div>
         </div>
     </section>
-<script src="js/jquery.validate.min.js"></script>
-<script>
-    $(function() {
-        $("#lienhe").validate({
-            rules: {
-                name: "required",
-
-                content: "required",
-                email: {
-                    required: true,
-                    email: true
-                },
-            },
-            messages: {
-                name: "Bạn chưa nhập tên",
-                email: "Bạn chưa nhập email",
-                content: "Bạn chua nhập content",
-            },
-            submitHandler: function(form) {
-                form.submit();
-            }
-        });
-    });
-</script>
 <?php include ('./footer.php')?>

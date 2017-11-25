@@ -1,5 +1,4 @@
 <?php include ('./header.php')?>
-<div id="body">
     <section>
         <div id="container">
             <div class="container">
@@ -45,6 +44,5 @@
             </div>
         </div>
     </section>
-</div>
 <?php include ('./footer.php')?>
 

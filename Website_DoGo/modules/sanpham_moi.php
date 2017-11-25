@@ -1,5 +1,4 @@
 <?php
-    include('./ketnoi.php');
     $sql="SELECT HinhAnh, TenMH, concat('$', Gia_ban), MaHang, MoTa FROM mathang";
 	$result = mysqli_query($conn,$sql);
 	// Phân trang
@@ -33,17 +32,11 @@
             echo "<div id=\"view\">";
           }
                 echo "<div class=\"pro\"  width='50%' class='phansp' height='250px' align='center'>
-                       
-                            <a href='chitiet_sp.php?frame=chitiet&MaHang=$row[3]'><img border='1px' width='150px' height='150px' src='image/sanphamnoibat/$row[0]'/></a><br>
-                                 <h3><a href='chitiet_sp.php?frame=chitiet&MaHang=$row[3]'>$row[1]</a></h3>
-                        <p class=\"tt\">$row[4]..</p>
-                        
-                        <span class='giaban'>$row[2]</span><br>
-                        
-                            <a class='giohang' href='modules/addcart.php?MaHang=$row[3]'>
-                            thêm vào giỏ hàng
-                            </a>
-                           
+                            <a href='chitiet_sp.php?frame=chitiet&MaHang=$row[3]'><img border='1px' width='240px' height='240px' src='image/sanphamnoibat/$row[0]'/></a><br>
+                            <h3><a href='chitiet_sp.php?frame=chitiet&MaHang=$row[3]'>$row[1]</a></h3>
+                            <p class=\"tt\">$row[4]..</p>
+                            <span class='giaban'>$row[2]</span><br>
+                            <a class='giohang' href='modules/addcart.php?MaHang=$row[3]'>thêm vào giỏ hàng</a>
                     </div>";
 
         if($dem % 2 == 0)
@@ -61,7 +54,6 @@
         // Lấy địa chỉ hiện tại
         $self = "index.php?";
         page_record($self,$p,$tongsotrang);
-
     ?>
      </div>
 </div>

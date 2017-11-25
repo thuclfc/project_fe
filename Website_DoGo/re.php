@@ -85,12 +85,7 @@ $message=null;
             $message .="<p>Mau khau khong dung</p>";
         }
       }
-    
-    
-    
-    
-    
-    
+
     
     if($hoten && $email && $phone && $company && $tp && $city && $password){
     

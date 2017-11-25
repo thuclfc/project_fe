@@ -1,6 +1,7 @@
 body{
     font-family: arial;
 }
+.cf{clear: both;}
 /*** ESSENTIAL STYLES ***/
 #menu {
     background-color:#fff;
@@ -241,7 +242,6 @@ li.chao{color:#fff !important; float:right !important; border-left:none !importa
 #sp{width:1170px !important}
 #sp .pro{
     width:258px;
-height: 340px;
     background:#fff;
     display:block;
     float:left;
@@ -261,6 +261,8 @@ height: 340px;
 .pro img{
     padding-top: 20px;
     padding-bottom: 0;
+    object-fit: cover;
+    object-position: top;
 }
 .pro h3 a{
     font-weight: normal;
@@ -283,20 +285,21 @@ height: 340px;
 }
 .pro a.giohang, #ct a.giohang {
     display: block;
-    width: 200px;
+    float: right;
+    width: 160px;
     text-align: center;
     background:#f95a36;
     color:#fff;
     margin-top:10px;
-    padding:10px 15px;
-    font-size:16px;
+    padding:10px;
+    font-size:15px;
+    text-transform: capitalize;
 }
 .chitiet_sp1 a.giohang {
     background:#f95a36;
     color:#fff;
     margin-bottom:20px;
     padding:5px;
-   
   border-radius:10px;
     font-size:12px;
 }
@@ -332,13 +335,17 @@ height: 340px;
 
 #viewcart{
     width:900px;
+    height: 250px;
     display: block;
-    height:200px;
+   clear: both;
+    margin-bottom: 25px;
 }
+#viewcart img,#viewcart1 img,.featured img{object-fit: cover; object-position: top;}
 #viewcart .left{
-   width:160px;
+   width:250px;
    float:left;
    display: block;
+    margin-right: 20px;
 }
 #viewcart1{
     width:325px;
@@ -379,9 +386,6 @@ form h4{
     font-size:16px;
     color:#f55600;
 }
-form hgroup{
-    margin-left:100px;
-}
 form p b{width:200px; display: block; float:left; text-align: right; margin-right:50px;}
 form input{width:500px;}
 form input[type="submit"]{
@@ -395,12 +399,17 @@ form input[type="submit"]:hover{
 }
 form.login input{
     width:250px;
+    height: 30px;
     margin-bottom:15px;
+    padding-left: 5px;
 }
 form.login label{
-    width:100px; 
+    width:80px;
     display: block;
-    float:left
+    float:left;
+    line-height: 30px;
+    text-align: right;
+    margin-right: 10px;
 }
 form.login input[type="submit"]{
     width:120px;
@@ -414,47 +423,41 @@ form.search input[type="submit"]{
 }
 form.search input[type="text"]{background:none; width:230px !important; }
 .chitiet_sp1{
-    width:400px; float:left;
+    width:800px; float:left;
     margin-right:30px;
     display: block;
     margin-top:30px;
     margin-bottom:30px;
 }
 p.message{text-align: left; font-size:16px;}
-.chitiet_sp1 img{width:150px; float:left; margin-right:15px;}
+.chitiet_sp1 img{float:left; margin-right:15px; object-fit: cover; object-position: top;}
 .chitiet_sp1 h3 a{font-size:18px !important}
 .chitiet_sp1 p{font-size:16px}
 
 #paganation{position: relative; width:600px; }
 #paganation .paga{}
 #mask1{
-
-	width:325px;
+    width: 600px;
+    margin: 0 auto;
     text-align: center;
-
-margin-left:30%;
 	background:#fff;
-
 	-webkit-border-radius:8px;
 	-moz-border-radius:8px;
 	border-radius:8px;
-
-
 	z-index:101;
-  
 }
+#mask1 .error1{width: 90%; display: block; clear: both; margin: 10px auto; text-align: left;}
+#mask1 input{height: 35px; border-radius: 5px; padding-left: 5px; border: 1px solid #ccc;}
 .box{
-    
     position: relative;
 }
 #mask{
     display: none;
 	background: #4c4c4c; 
-	position: fixed; left: 0; top: 0; 
-	z-index: 10;
+	position: fixed; left: 0; top: 0;
 	width: 100%; height: 100%;
 	opacity: 0.5;
-	z-index: 9999;
+	z-index: 99;
 }
 #mask1 h4{
     color:#fff;
@@ -487,7 +490,6 @@ p.sucess, p.erorr1{
     clear:both;
 }
 .output{text-align: left;}
-
 .fluid_container{width: 1140px; overflow: hidden; position: relative;}
 .fluid_container a.next,.fluid_container a.prev{width: 42px; height: 26px; display: block; background: url("../image/up-arrow.png") no-repeat; text-indent: -9999em; position: absolute; top: 50%; transform: translateY(-50%);}
 .fluid_container a.next{ right: 10px; transform: rotate(90deg);}
@@ -511,7 +513,7 @@ ul.pag li.active a{color: #c00;}
     background:rgba(0,0,0,0.59);
     width:100%;
     top:0;
-    left:105px;
+    left:25px;
     font-size:15px;
     color:#626262;
     line-height:22px;
@@ -550,5 +552,27 @@ ul.pag li.active a{color: #c00;}
     overflow: hidden;
     position: relative;
 }
+.register input{height: 35px; padding-left: 5px; border-radius: 3px; border: 1px solid #ccc;}
+.register .frm{display: flex; justify-content: flex-end; margin-bottom: 14px;}
+.register label{width: 150px; display: block;}
 
-
+.products{display: flex; flex-wrap: wrap; justify-content: space-between;}
+.products article{display: block; width: 23%; padding: 15px; margin-bottom: 40px; border: 1px solid #ccc;}
+.post img{object-fit: cover; object-position: top; display: block; margin: 15px auto;}
+.post h3{font-size: 18px; text-align: center; margin: 0;}
+.post p{text-align: center; margin: 0; padding: 10px 0; border-bottom: 1px solid #ccc;}
+.post .price{display: block; font-size: 15px; padding: 10px 0;}
+.post .cart{
+    display: block;
+    float: right;
+    width: 160px;
+    text-align: center;
+    background: #f95a36;
+    color: #fff;
+    margin-top: 10px;
+    padding: 10px;
+    font-size: 15px;
+    text-transform: capitalize;
+}
+#lienhe input{height: 33px; padding-left: 5px; border-radius: 3px; border: 1px solid #ccc;}
+#lienhe textarea{padding: 10px;}

@@ -26,28 +26,6 @@ $(document).ready(function() {
 		}
 	});
 	/* Ajax Cart */
-
-	if ($('body').width() < 980) {
-			$('#cart .heading span.link_a').live("click", function(){
-				if ($('#cart').hasClass('active')) { 
-					jQuery('#cart').removeClass('active'); 
-					}
-				else {
-					$('#cart').addClass('active');
-					}
-				})
-			
-			} else {
-			$('#cart > .heading span.link_a').live('mouseover', function() {
-			$('#cart').addClass('active');
-			
-			$('#cart').load('index.php?route=module/cart #cart > *');
-			
-			$('#cart').live('mouseleave', function() {
-				$(this).removeClass('active');
-			});
-			});
-		}
 });
 
 function getURLVar(key) {
@@ -216,7 +194,7 @@ function box_slider(item,item_active,pag,pag_active,slider,next_button,prev_butt
         clearInterval(interval);
         var active_item=$(item_active).index();
         var movie_prev=(active_item-1)*width_item;
-        if(item_active == 0){
+        if(active_item == 0){
             movie_prev = 0;
         }
         $(slider).css({'transform':'translateX('+-movie_prev+'px)'});

@@ -100,7 +100,6 @@ if(isset($_POST['submit'])) {
   }
   
 }
-
 ?>
 <?php echo $output; ?>
 </body>

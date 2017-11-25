@@ -8,158 +8,128 @@
                             <a href="index.php">Trang chủ</a>
                             &raquo; <a href="dangky.php">Đăng ký</a>
                         </div>
-                        <h1>Đăng ký tài khoản</h1>
+                        <h1 style="font-size: 20px; text-transform: uppercase">Đăng ký tài khoản</h1>
                         <div class="box-container">
                             <?php
                             if(isset($_POST['submit'])){
-
-                                include_once("./ketnoi.php");
-
                                 function check_email($email) {
                                     if (strlen($email) == 0) return false;
-                                    if (eregi("^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$", $email)) return true;
-
+                                    if (mb_eregi("^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$", $email)) return true;
                                 }
-
                                 $message=null;
                                 // Dùng hàm addslashes() để tránh SQL injection, dùng hàm md5() để mã hóa password
                                 $hoten = addslashes( $_POST['firstname'] );
-                                $phone = addslashes( $_POST['telephone'] );
+                                $phone = addslashes( $_POST['sdt'] );
                                 $password = md5( addslashes( $_POST['password'] ) );
                                 $verify_password = md5( addslashes( $_POST['password1'] ) );
                                 $email = addslashes( $_POST['email'] );
-                                $company = addslashes( $_POST['company'] );
-                                $tp = addslashes( $_POST['city'] );
-                                $qg = addslashes( $_POST['country_id'] );
-                                // Kiểm tra 7 thông tin, nếu có bất kỳ thông tin chưa điền thì sẽ báo lỗi
+
+                                // Kiểm tra thông tin, nếu có bất kỳ thông tin chưa điền thì sẽ báo lỗi
 
                                 if(empty($_POST['firstname'])){
                                     $hoten=false;
-                                    $message .="<p>Ban chua nhap ho ten!</p>";
+                                    $message .="<p>Bạn chua nhập họ tên!</p>";
                                 } else {
                                     $hoten=addslashes($_POST['firstname']);
                                 }
 
                                 if(empty($_POST['email'])){
                                     $email=false;
-                                    $message .="<p>Ban chua nhap email</p>";
+                                    $message .="<p>Bạn chưa nhập email</p>";
                                 } else {
                                     $email=addslashes($_POST['email']);
                                 }
 
-
-                                if(empty($_POST['telephone'])){
+                                if(empty($_POST['sdt'])){
                                     $phone=false;
-                                    $message .="<p>Ban chua nhap dien thoai</p>";
+                                    $message .="<p>Bạn chưa nhập SĐT</p>";
                                 } else {
-                                    $phone=addslashes($_POST['telephone']);
+                                    $phone=addslashes($_POST['sdt']);
                                 }
-                                if(empty($_POST['company'])){
-                                    $company=false;
-                                    $message .="<p>Ban chua nhap dia chi</p>";
-                                } else {
-                                    $company=addslashes($_POST['company']);
-                                }
-
-                                if(empty($_POST['city'])){
-                                    $tp=false;
-                                    $message .="<p>Ban chua nhap thanh pho</p>";
-                                } else {
-                                    $tp=addslashes($_POST['city']);
-                                }
-
 
                                 if(empty($_POST['password'])){
                                     $password=false;
-                                    $message .="<p>Ban chua nhap password</p>";
+                                    $message .="<p>Bạn chưa nhập mật khẩu</p>";
                                 } else {
                                     if($_POST['password']== $_POST['password1']){
                                         $password=addslashes($_POST['password']);
                                     } else {
                                         $password=false;
-                                        $message .="<p>Mau khau khong dung</p>";
+                                        $message .="<p>Mật khẩu không đúng</p>";
                                     }
                                 }
 
                                 if(mysqli_num_rows(mysqli_query($conn,"select email from  members where email='{$_POST["email"]}'"))>0)
                                 {
                                     $email=false;
-                                    $message .= "Email da co nguoi dung. Ban vui long chon email khac. ";
+                                    $message .= "Email đã được sử dụng, bạn vui lòng chọn email khác.";
 
                                 } else {
                                     $email=addslashes($_POST['email']);
                                 }
 
-
-
-
-                                if($hoten && $email && $phone && $company && $tp && $city && $password){
-
-
-
-                                    @$a=mysqli_query($conn,"INSERT INTO members (HoTen, email, dienthoai, address, TP,QuocGia, password) VALUES ('{$hoten}', '{$email}', '{$phone}', '{$company}', '{$tp}', '{$qg}', '{$password}')");
+                                if($hoten && $email && $password && $phone){
+                                    @$a=mysqli_query($conn,"INSERT INTO members (HoTen, email, password, dienthoai) VALUES ('{$hoten}','{$email}','{$password}','{$phone}')");
                                     // Thông báo hoàn tất việc tạo tài khoản
                                     if ($a){
                                         echo "Tài khoản {$username} đã được tạo. <a href='login.php'>Nhấp vào đây để đăng nhập</a>";
-
                                         exit();
                                     } else {
-                                        $message .="<p>Ban khong the dang ky</p>".mysql_error();
+                                        $message .="<p>Bạn không thể đăng ký</p>".mysqli_error();
                                     }
-                                    mysql_close();
+                                    mysqli_close();
                                 } else {
-                                    $message .="<p>Hay thu lai</p>";
+                                    $message .="<p>Hãy thử lại...</p>";
                                 }
-
-
                             }
-
-
-
-
                             ?>
                             <div id="error">
                                 <?php
-
                                 if(isset($message)){
                                     echo "<div class=\"error1\">";
                                     echo '<h4>Vui lòng sửa các lỗi sau để tiếp tục đăng ký:</h4>';
                                     echo '<p class=\'error\'>',$message,'</p>';
                                     "</div>";
                                 }
-
                                 ?>
                             </div>
-                            <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+                            <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" class="register">
                                 <fieldset>
                                     <h4>Thông tin cá nhân: </h4>
-                                    <hgroup>
-                                        <p><b>Ho Ten: </b><input type="text" name="firstname" size="15" maxlength="15" value="<?php if(isset($_POST['firstname'])) echo $_POST['firstname']; ?>" /></p>
-                                        <p><b>Email: </b><input type="text" name="email" size="40" maxlength="40" value="<?php if(isset($_POST['email'])) echo $_POST['email'];?>" /></p>
-                                        <p><b>Phone: </b><input type="text" name="telephone" size="10" maxlength="20" value="<?php if(isset($_POST['telephone'])) echo $_POST['telephone']?>" /></p>
-                                    </hgroup>
-                                    <h4>Địa chỉ</h4>
-                                    <hgroup>
-                                        <p><b>Xóm/Phường/thị trấn: </b><input type="text" name="company" size="40" maxlength="40" value="<?php if(isset($_POST['company'])) echo $_POST['company'];?>" /></p>
-                                        <p><b>TP: </b><input type="text" name="city" size="10" maxlength="20" value="" /></p>
-                                    </hgroup>
+                                    <article>
+                                        <div class="frm">
+                                            <label>Họ tên: </label>
+                                            <input type="text" name="firstname" size="15" maxlength="15" value="<?php if(isset($_POST['firstname'])) echo $_POST['firstname']; ?>" />
+                                        </div>
+                                        <div class="frm">
+                                            <label>Email: </label>
+                                            <input type="text" name="email" size="40" maxlength="40" value="<?php if(isset($_POST['email'])) echo $_POST['email'];?>" />
+                                        </div>
+                                        <div class="frm">
+                                            <label>SĐT: </label>
+                                            <input type="text" name="sdt" size="10" maxlength="20" value="<?php /*if(isset($_POST['sdt'])) echo $_POST['sdt']*/?>" />
+                                        </div>
+                                    </article>
                                     <h4>Bảo mật</h4>
-                                    <hgroup>
-                                        <p><b>Mat khau: </b><input type="password" name="password" size="20" maxlength="20" /></p>
-                                        <p><b>Xac thuc mat khau: </b><input type="password" name="password1" size="20" maxlength="20" /></p>
-                                    </hgroup>
+                                    <article>
+                                        <div class="frm">
+                                            <label>Mật khẩu: </label>
+                                            <input type="password" name="password" size="20" maxlength="20" />
+                                        </div>
+                                        <div class="frm">
+                                            <label>Xác thực mật khẩu: </label>
+                                            <input type="password" name="password1" size="20" maxlength="20" />
+                                        </div>
+                                    </article>
                                 </fieldset>
-                                <div style="text-align: center;">
-                                    <input type="submit" value="Dang ky" name="submit" />
+                                <div style="float: right;">
+                                    <input type="submit" value="Đăng ký" name="submit" />
                                 </div>
                             </form>
-
                         </div>
                     </div>
-                    <div class="clear"></div>
                 </div>
             </div>
         </div>
-        <div class="clear"></div>
     </section>
 <?php include ('./footer.php')?>

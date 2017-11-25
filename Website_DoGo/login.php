@@ -7,13 +7,13 @@
                     <div class="col-sm-9 col-sm-12" id="content">
                         <div class="breadcrumb">
                             <a href="index.php">Trang chủ</a>
-                            &raquo;<a href="login.php">Đăng nhập</a>
+                            &raquo; <a href="login.php">Đăng nhập</a>
                         </div>
-                        <h1>Tài khoản đăng nhập</h1>
+                        <h1 style="font-size: 20px; text-transform: uppercase;">Tài khoản đăng nhập</h1>
                         <div class="box-container">
                             <div class="login-content row" style="text-align: center;">
                                 <div class="col-sm-6">
-                                    <div class="center">
+                                    <div class="box-login">
                                         <div class="heading" >
                                             <i class="fa fa-key"></i>
                                             <div class="extra-wrap">
