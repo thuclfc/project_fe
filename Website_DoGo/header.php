@@ -86,9 +86,7 @@ $u_member = $_SESSION['HoTen'];
                                 <a href="danhmucsp.php">DANH MỤC SẢN PHẨM</a>
                                 <div class="sf-mega">
                                     <ul class="sf-mega-section">
-                                        <li class="screenshot1">
-                                            <a href="/thoi-trang-dong.php">Thời trang đông</a>
-                                        </li>
+                                        <li class="screenshot1"><a href="/thoi-trang-dong.php">Thời trang đông</a></li>
                                         <li> <a class="screenshot1"  href="/thoi-trang-he.php">Thời trang hè</a></li>
                                     </ul>
                                 </div>

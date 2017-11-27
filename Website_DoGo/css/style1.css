@@ -249,7 +249,7 @@ li.chao{color:#fff !important; float:right !important; border-left:none !importa
     position: relative;
     border: 1px solid #ccc;
     padding-bottom:20px;
-    margin-bottom:50px;
+    margin-bottom:40px;
     
 }
 .clear{clear: both;}
@@ -270,9 +270,13 @@ li.chao{color:#fff !important; float:right !important; border-left:none !importa
     color:#4c4c4c
 }
 .pro p.tt{
+    display: block;
     margin:0 15px;
     border-bottom:1px solid #ccc;
     padding-bottom:10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .pro span{
     color:#000;

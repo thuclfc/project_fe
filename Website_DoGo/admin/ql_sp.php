@@ -1,7 +1,7 @@
 <?PHP
 session_start();
 	include("../ketnoi.php");
-		if($_GET['del_id_sp'])
+    if($_GET['del_id_sp'])
 	{
 		$del_id_sp = $_GET['del_id_sp'];
 		// Xóa
@@ -30,50 +30,39 @@ session_start();
     </tr>
     <tr>
       <td colspan="8">Trang:
-       <?php  
-                
-                    echo "<a class='phantrang' href='?action=sua_sp&p=1'>Đầu  </a>";
-                    for ($i = 1;$i<=$tongsotrang;$i++)
+       <?php
+            echo "<a class='phantrang' href='?action=sua_sp&p=1'>Đầu  </a>";
+            for ($i = 1;$i<=$tongsotrang;$i++)
+            {
+                if($i==$p)
+                {
+                    echo "<font color='red' size='3'>$i   </font>";
+                }
+                else
+                {
+                    echo "<a  href='?action=sua_sp&p=$i'>$i  </a>";
+                }
+                if($i == $tongsotrang)
                     {
-                        if($i==$p)
-                        {
-                            echo "<font color='red' size='3'>$i   </font>";
-                        }
-                        else
-                        {
-                
-                            echo "<a  href='?action=sua_sp&p=$i'>$i  </a>";
-                            
-                        }
-                        if($i == $tongsotrang)
-                            {
-                                echo "<a  href='?action=sua_sp&p=$tongsotrang'>Cuối  </a>";
-                            }
+                        echo "<a  href='?action=sua_sp&p=$tongsotrang'>Cuối  </a>";
                     }
-                ?>
+            }
+        ?>
       
       </td>
-      <td colspan="4"><label>
-        
-      </label>        <label>
-       
-              </label></td>
+      <td colspan="4"></td>
     </tr>
     <tr align="center" bgcolor="#0066CC">
-      <td width="20"><span class="style2">
-        <label>
-        <input type="checkbox" name="checkall" id="checkall" />
-        </label>
-      </span></td>
-
+      <td width="20">
+          <span class="style2">
+            <input type="checkbox" name="checkall" id="checkall" />
+          </span>
+      </td>
       <td width="30"><span class="style2"></span></td>
       <td width="30"><span class="style2"></span></td>
       <td><span class="style2">Mã TB</span></td>
       <td><span class="style2">Tên TB</span></td>
-     
-      
       <td><span class="style2">Giá bán</span></td>
-     
       <td><span class="style2">Số lượng</span></td>
       <td> <span class="style2">Hình ảnh</span></td>
     </tr>
@@ -94,10 +83,7 @@ session_start();
       <td><a href='?action=sua_sp&del_id_sp=".$r['MaHang']."'>Xóa</a></td>
       <td>".$r['MaHang']."</td>
       <td>".$r['TenMH']."</td>
-    
-    
       <td>".$r['Gia_ban']."</td>
-  
       <td>".$r['SLTon']."</td>
       <td>".$r['HinhAnh']."</td>
     </tr>";

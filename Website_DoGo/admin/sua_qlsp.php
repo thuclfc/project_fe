@@ -29,28 +29,25 @@ padding-right:15px;
 	{
 		$ma_tb = $_POST['MaHang'];
 		$ten_tb = $_POST['TenMH'];
-	
 		$giaban = $_POST['Gia_ban'];
-	   $mota=$_POST['mota'];
+	    $mota=$_POST['mota'];
 		$soluong = $_POST['SLTon'];
 		$file = $_FILES['file']['name'];
-		
-										
+
 		// Neu khong chon file
 		if($_FILES['file']['name'] == "")
 		{
-			mysqli_query($conn,"UPDATE mathang SET MaHang = '$ma_tb', TenMH = '$ten_tb', Gia_ban = '$giaban', SLTon= '$soluong' WHERE MaHang = '$MaHang'");
+			mysqli_query($conn,"UPDATE mathang SET MaHang = '$ma_tb', TenMH = '$ten_tb', Gia_ban = '$giaban', SLTon= '$soluong' WHERE MaHang = '$id_sp'");
 		}
 		else
 		{
-			mysqli_query($conn,"UPDATE mathang SET MaHang = '$ma_tb', TenMH = '$ten_tb',  Gia_ban = '$giaban', SLTon= '$soluong', HinhAnh = '$file' WHERE MaHang = '$MaHang' ");
+			mysqli_query($conn,"UPDATE mathang SET MaHang = '$ma_tb', TenMH = '$ten_tb',  Gia_ban = '$giaban', SLTon= '$soluong', HinhAnh = '$file' WHERE MaHang = '$id_sp' ");
 			move_uploaded_file($_FILES['file']['tmp_name'],"../image/sanphamnoibat/".$_FILES['file']['name']);
 		}
 		$tb = "Cập nhật thành công!";
-         header("refresh:1;index.php");
+         /*header("refresh:1;index.php");*/
 	}
-	$truyvan_qlsp = mysqli_query($conn,"SELECT MaHang,TenMH,Gia_ban,SLTon,HinhAnh,MoTa FROM mathang WHERE  MaHang = '$MaHang'");
-	
+	$truyvan_qlsp = mysqli_query($conn,"SELECT MaHang,TenMH,Gia_ban,SLTon,HinhAnh,MoTa FROM mathang WHERE  MaHang = '$id_sp'");
 	$r = mysqli_fetch_array($truyvan_qlsp);
 
 ?>
@@ -62,7 +59,7 @@ padding-right:15px;
     <tr>
       <td colspan="2" align="center">
       <?php
-	  	echo "<img src='../image/sanphamnoibat/".$r[4]."' width='150px' height='150px' border='0' />";
+	  	echo "<img src='../image/sanphamnoibat/".$r[4]."' width='150px' height='150px' border='0' style='object-fit:cover; object-position: top' />";
 	  ?>      </td>
     </tr>
     <tr>
@@ -75,14 +72,14 @@ padding-right:15px;
       <td  class="ten_field">Tên Sản phẩm:</td>
       <td><input name="TenMH" type="text" id="ten_tb" value="<?php if(isset($_GET['MaHang'])) { echo $r['TenMH']; } ?>" size="40" /></td>
     </tr>
-   
-   
+
+
       <td class="ten_field">Giá bán:</td>
       <td><input name="Gia_ban" type="text" id="giaban" value="<?php if(isset($_GET['MaHang'])) { echo $r['Gia_ban']; }?>" size="20" />
 
         </td>
     </tr>
-   
+
     <tr>
       <td class="ten_field">Đặc tính kỹ thuật:</td>
       <td><label>

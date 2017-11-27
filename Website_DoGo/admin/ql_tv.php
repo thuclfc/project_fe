@@ -30,54 +30,45 @@ session_start();
     </tr>
     <tr>
       <td colspan="8">Trang:
-       <?php  
+        <?php
                 
-                    echo "<a class='phantrang' href='?action=sua_tv&p=1'>Đầu  </a>";
-                    for ($i = 1;$i<=$tongsotrang;$i++)
+            echo "<a class='phantrang' href='?action=sua_tv&p=1'>Đầu  </a>";
+            for ($i = 1;$i<=$tongsotrang;$i++)
+            {
+                if($i==$p)
+                {
+                    echo "<font color='red' size='3'>$i   </font>";
+                }
+                else
+                {
+
+                    echo "<a  href='?action=sua_tv&p=$i'>$i  </a>";
+
+                }
+                if($i == $tongsotrang)
                     {
-                        if($i==$p)
-                        {
-                            echo "<font color='red' size='3'>$i   </font>";
-                        }
-                        else
-                        {
-                
-                            echo "<a  href='?action=sua_tv&p=$i'>$i  </a>";
-                            
-                        }
-                        if($i == $tongsotrang)
-                            {
-                                echo "<a  href='?action=sua_tv&p=$tongsotrang'>Cuối  </a>";
-                            }
+                        echo "<a  href='?action=sua_tv&p=$tongsotrang'>Cuối  </a>";
                     }
-                ?>
-      
+            }
+        ?>
       </td>
-      <td colspan="4"><label>
-        
-      </label>        <label>
-       
-              </label></td>
+      <td colspan="4"></td>
     </tr>
     <tr align="center" bgcolor="#0066CC">
-      <td width="20"><span class="style2">
-        <label>
-        <input type="checkbox" name="checkall" id="checkall" />
-        </label>
-      </span></td>
-
+      <td width="20">
+          <span class="style2">
+            <input type="checkbox" name="checkall" id="checkall" />
+          </span>
+      </td>
       <td width="30"><span class="style2"></span></td>
       <td width="30"><span class="style2"></span></td>
       <td><span class="style2">ID</span></td>
       <td><span class="style2">Level</span></td>
-     
-      
       <td><span class="style2">Họ Tên</span></td>
-     
       <td><span class="style2">Email</span></td>
       <td> <span class="style2">Điện Thoại</span></td>
       <td><span class="style2">Address</span></td>
-      <td> <span class="style2">Password</span></td>
+      <td><span class="style2">Password</span></td>
     </tr>
     <?php 
 	$mau =1;
@@ -96,10 +87,7 @@ session_start();
       <td><a href='?action=sua_tv&del_id_tv=".$r['id']."'>Xóa</a></td>
       <td>".$r['id']."</td>
       <td>".$r['level']."</td>
-    
-    
       <td>".$r['HoTen']."</td>
-  
       <td>".$r['email']."</td>
       <td>".$r['dienthoai']."</td>
       <td>".$r['address']."</td>
