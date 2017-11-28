@@ -24,7 +24,7 @@ session_start();
 	$truyvan_qlsp_page = mysqli_query($conn,"SELECT * FROM mathang limit $x, $sodong");
 ?>
 <form id="ql_sp" name="ql_sp" method="post" action="">
-  <table width="100%" border="0" cellpadding="0" cellspacing="0" bordercolor="#0066CC">
+  <table width="100%" border="0" >
     <tr>
       <td height="23" colspan="11" align="center" bgcolor="#0066CC"><span class="style1">QUẢN LÝ SẢN PHẨM</span></td>
     </tr>
@@ -48,7 +48,6 @@ session_start();
                     }
             }
         ?>
-      
       </td>
       <td colspan="4"></td>
     </tr>
@@ -59,24 +58,24 @@ session_start();
           </span>
       </td>
       <td width="30"><span class="style2"></span></td>
-      <td width="30"><span class="style2"></span></td>
+      <td width="35"><span class="style2"></span></td>
       <td><span class="style2">Mã TB</span></td>
       <td><span class="style2">Tên TB</span></td>
       <td><span class="style2">Giá bán</span></td>
       <td><span class="style2">Số lượng</span></td>
       <td> <span class="style2">Hình ảnh</span></td>
     </tr>
-    <?php 
+    <?php
 	$mau =1;
     while($r = mysqli_fetch_array($truyvan_qlsp_page))
 	{
 		if($mau % 2 ==0)
 		{
-			echo "<tr bgcolor='#CCCCCC'>";
+			echo "<tr style='background: #ccc;'>";
 		}
 		else
 		{
-			echo "<tr bgcolor='#FFF'>";
+			echo "<tr style='background: #fff'>";
 		}
      echo "<td><input type='checkbox' name='check' id='check' /></td>
       <td><a href='?action=sua_sp&MaHang=".$r['MaHang']."'>Sửa</a></td>

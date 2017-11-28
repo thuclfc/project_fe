@@ -24,7 +24,7 @@ padding-right:15px;
 	include("../ketnoi.php");
 	$id_sp = $_GET['MaHang'];
 	// Cập nhật
-	// Neu co an nut cap nhat
+	// Nếu có nút cập nhật
 	if(isset($_GET['MaHang']) && $_POST['capnhat'])
 	{
 		$ma_tb = $_POST['MaHang'];
@@ -34,7 +34,7 @@ padding-right:15px;
 		$soluong = $_POST['SLTon'];
 		$file = $_FILES['file']['name'];
 
-		// Neu khong chon file
+		// Nếu không chọn file
 		if($_FILES['file']['name'] == "")
 		{
 			mysqli_query($conn,"UPDATE mathang SET MaHang = '$ma_tb', TenMH = '$ten_tb', Gia_ban = '$giaban', SLTon= '$soluong' WHERE MaHang = '$id_sp'");
@@ -45,7 +45,7 @@ padding-right:15px;
 			move_uploaded_file($_FILES['file']['tmp_name'],"../image/sanphamnoibat/".$_FILES['file']['name']);
 		}
 		$tb = "Cập nhật thành công!";
-         /*header("refresh:1;index.php");*/
+         /*header("refresh:3;index.php");*/
 	}
 	$truyvan_qlsp = mysqli_query($conn,"SELECT MaHang,TenMH,Gia_ban,SLTon,HinhAnh,MoTa FROM mathang WHERE  MaHang = '$id_sp'");
 	$r = mysqli_fetch_array($truyvan_qlsp);

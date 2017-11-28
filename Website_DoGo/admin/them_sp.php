@@ -33,13 +33,13 @@ padding-right:15px;
 		$file = $_FILES['HinhAnh']['name'];
 
 		if(empty($ma_tb) || empty($ten_tb) || empty($giaban) || empty($dactinh) || empty($soluong)){
-		    $tb .= "Bạn phải nhập thông tin cho sản phẩm trước khi thêm sản phẩm<br>";
+		    $messages .= "Bạn phải nhập thông tin cho sản phẩm trước khi thêm sản phẩm<br>";
         }
 
         if(mysqli_num_rows(mysqli_query($conn,"select MaHang from mathang where MaHang='{$_POST["MaHang"]}'"))>0)
         {
             $ma_tb=false;
-            $tb .= "Thêm thất bại do mã mặt hàng \"$ma_tb\" đã tồn tại...<br>";
+            $messages .= "Thêm thất bại do mã mặt hàng \"{$_POST["MaHang"]}\" đã tồn tại...<br>";
 
         } else {
             $ma_tb=addslashes($_POST['MaHang']);
@@ -49,14 +49,8 @@ padding-right:15px;
             $kq_query = mysqli_query($conn,"INSERT INTO mathang (MaHang, TenMH ,MoTa , Gia_ban , SLTon, HinhAnh) VALUES ('$ma_tb','$ten_tb','$dactinh','$giaban','$soluong','$file')");
 
             move_uploaded_file($_FILES['file']['tmp_name'],"../image/sanphamnoibat/".$_FILES['file']['name']);
-            if($kq_query == "")
-            {
-                $tb = "Thêm thất bại do mã thiết bị \"$ma_tb\" trùng";
-            }
-            else
-            {
-                $tb = "Thêm thành công!";
-            }
+
+            $messages = "Thêm thành công!";
         }
 	}
 ?>
@@ -67,16 +61,16 @@ padding-right:15px;
     </tr>
       <tr>
           <td class="style2"></td>
-          <td class="style2" style="color: #f0c; padding-top: 10px;"><?php echo $tb; ?></td>
+          <td class="style2" style="color: #f0c; padding-top: 10px;"><?php echo $messages; ?></td>
       </tr>
       <tr>
-      <td  class="ten_field">Mã thiết bị: </td>
+      <td  class="ten_field">Mã sản phẩm: </td>
       <td>
         <input name="MaHang" type="text" id="ma_tb" value="<?php echo $_POST['MaHang'];  ?>" size="20" />
       </td>
     </tr>
       <tr>
-      <td class="ten_field">Tên thiết bị:</td>
+      <td class="ten_field">Tên sản phẩm:</td>
       <td><input name="TenMH" type="text" id="ten_tb" value="<?php echo $_POST['TenMH']; ?>" size="40" /></td>
     </tr>
       <tr>
@@ -92,7 +86,7 @@ padding-right:15px;
     </tr>
       <tr>
       <td  class="ten_field">Số lượng còn:</td>
-      <td ><input name="SLTon" type="text" id="soluong" value="<?php $_POST['SLTon'];  ?>" size="20" /></td>
+      <td ><input name="SLTon" type="text" id="soluong" value="<?php echo $_POST['SLTon'];  ?>" size="20" /></td>
     </tr>
       <tr>
       <td  class="ten_field">Hình ảnh:</td>

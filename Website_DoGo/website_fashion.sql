@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Nov 25, 2017 at 06:56 AM
+-- Generation Time: Nov 28, 2017 at 01:10 PM
 -- Server version: 5.6.31
 -- PHP Version: 7.0.8
 
@@ -38,29 +38,17 @@ CREATE TABLE IF NOT EXISTS `dondathang` (
   `SDT` varchar(16) NOT NULL,
   `address` varchar(200) NOT NULL,
   `note` varchar(255) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `dondathang`
 --
 
 INSERT INTO `dondathang` (`MaDDH`, `Date`, `MaHH`, `TenHH`, `SoLuong`, `GiatriDH`, `HoTen`, `Email`, `SDT`, `address`, `note`) VALUES
-(17, '2014-09-17 20:17:03', 'MH13', 'Nghế ngồi', 1, 147, 'g', 'thucnd@ezsolution.vn', '41', 'g', ''),
-(5, '2014-09-16 21:37:54', 'MH12', 'Nghế ngồi', 1, 541, 'Thuc', 'dac_thuc@yahoo.com', '123', 'hn', ''),
-(6, '2014-09-16 21:37:54', 'MH12', 'Nghế ngồi', 1, 541, 'Thuc', 'dac_thuc@yahoo.com', '123', 'hn', ''),
-(7, '2014-09-17 13:52:45', 'MH13', 'Nghế ngồi', 1, 147, 'thuclfc', 'thuclfc@gmail.com', '09', 'hn', ''),
-(8, '2014-09-17 13:56:59', 'MH12', 'Nghế ngồi', 1, 147, 'thuclfc', 'thuclfc@gmail.com', '09', 'hn', ''),
-(9, '2014-09-17 14:25:18', 'MH09', 'Nghế ngồi', 1, 147, 'thuclfc', 'thuclfc@gmail.com', '09', 'fafa', ''),
-(10, '2014-09-17 14:35:28', 'MH05', 'tuphongkhachkhamoc', 1, 422, 'thuclfc', 'dacthuc92@gmail.com', '01642546737', 'bac ninh', ''),
-(11, '2014-09-17 14:35:59', 'MH05', 'tuphongkhachkhamoc', 1, 422, 'thuclfc', 'dacthuc92@gmail.com', '01642546737', 'bac ninh', ''),
-(12, '2014-09-17 15:16:32', 'MH05', 'tuphongkhachkhamoc', 1, 422, 'thuclfc', 'thuclfc@gmail.com', '01642546737', 'bac ninh', ''),
-(13, '2014-09-17 15:22:00', 'MH05', 'tuphongkhachkhamoc', 1, 422, 'thuclfc', 'nguyennhung_14492@yahoo.com', '01642546737', 'hn', ''),
-(14, '2014-09-17 15:36:32', 'MH07', 'Bàn uống nước', 10, 7170, 'thuclfc', 'dac_thuc@yahoo.com', '09', 'bac ninh', ''),
-(15, '2014-09-17 16:03:04', 'MH09', 'Nghế ngồi', 1, 147, 'thuclfc', 'thuclfc@gmail.com', '09', 'bac ninh', ''),
-(16, '2014-09-17 16:06:34', 'MH09', 'Nghế ngồi', 1, 147, 'thuclfc', 'thuclfc@gmail.com', '01642546737', 'bac ninh', ''),
+(24, '2017-11-27 15:10:55', 'MH07', 'Bàn uống nước', 1, 494, 'Thị Chinh', 'chinhthi@gmail.com', '0966514983', 'BN', ''),
+(25, '2017-11-27 15:11:56', 'MH13', 'Nghế ngồi', 2, 294, 'thuclfc', 'thuclfc@gmail.com', '01642546737', 'TS-BN', ''),
 (18, '2017-11-23 15:15:25', 'MH04', 'tuphongkhach', 1, 322, 'Thucnd', 'thuclfc@gmail.com', '01642546737', 'fs', 'fsfs'),
 (19, '2017-11-24 10:04:05', 'MH09', 'Nghế ngồi', 1, 147, 'namnh', 'namnh@gmail.com', '0966514983', 'từ sơn', ''),
-(20, '2017-11-24 10:51:12', 'MH09', 'Nghế ngồi', 1, 147, 'chinhnt', 'chinhnt@gmail.com', '0966514983', 'bắc ninh', ''),
 (21, '2017-11-24 11:02:14', 'MH11', 'Nghế ngồi', 1, 147, 'lfc', 'lfc@gmail.com', '01649580989', 'TPHCM', ''),
 (22, '2017-11-24 11:10:03', 'MH12', 'Nghế ngồi', 2, 294, 'Thucnd', 'thuclfc@gmail.com', '1642546328', 'Le Van Luong', ''),
 (23, '2017-11-24 11:14:09', 'MH12', 'Nghế ngồi', 1, 147, 'Phương', 'phuongpt@gmail.com', '0966514983', 'bắc ninh', '');
@@ -248,17 +236,22 @@ CREATE TABLE IF NOT EXISTS `mathang` (
 --
 
 INSERT INTO `mathang` (`MaNCC`, `MaHang`, `TenMH`, `HinhAnh`, `MoTa`, `DVT`, `Gia_ban`, `SLTon`, `Thue`, `MaLMH`) VALUES
-('NC002', 'MH04', 'tuphongkhach', 'alb_1482304118_902.jpg', 'abc xyz', 'Bộ', '321.5', 1, '5.00', '01'),
-('NC01', 'MH05', 'tuphongkhachkhamoc', 'imgp0912.jpg', 'abc zxy', 'Đôi', '421.8', 0, '2.00', '01'),
-('NC06', 'MH06', 'Bàn uống nước', 'imgp2042_copy_666x1000_672x1000.jpg', 'abc - zyx', '2', '394', 1, '4.00', '01'),
-('NC06', 'MH07', 'Bàn uống nước', 'imgp3609 copy-min.jpg', 'abc - zyx - abc', '2', '494', 1, '4.00', '01'),
+('', 'MH06', 'Dress', 'imgp1860_copy.jpg', 'red dress', '', '129', 15, '0.00', ''),
+('', 'MH02', 'Váy ngắn', 'IMGP1989_copy_thumb_399x600.jpg', 'Váy ngắn hở mông', '', '129', 10, '0.00', ''),
+('NC06', 'MH07', 'Bàn uống nước', 'imgp3609 copy-min.jpg', 'abc - zyx - abc', '2', '494', 0, '4.00', '01'),
 ('NC004', 'MH08', 'Nghế ngồi', 'imgp2042_copy_666x1000_672x1000.jpg', 'Nghề ngồi uống nước', '23', '147', 8, '1.00', '03'),
 ('NC004', 'MH09', 'Nghế ngồi', 'imgp3645 copy-min.jpg', 'bàn ăn cơm', '23', '147', 4, '1.00', '12'),
 ('NC004', 'MH10', 'Nghế ngồi', 'imgp0932.jpg', 'bàn nghế phòng khách', '23', '147', 4, '1.00', '12'),
 ('NC004', 'MH11', 'Nghế ngồi', 'imgp2103_copy_666x1000_346x644.jpg', 'bàn nghế phòng khách', '23', '147', 1, '1.00', '04'),
 ('NC004', 'MH12', 'Nghế ngồi', 'imgp1376.jpg', 'bàn nghế phòng khách', '23', '147', 0, '1.00', '03'),
-('NC004', 'MH13', 'Nghế ngồi', 'IMGP2274_copy_thumb_400x600.jpg', 'bàn nghế phòng khách', '23', '147', 10, '1.00', '04'),
-('NC004', 'MH14', 'Nghế ngồi', 'imgp2300_copy_666x1000.jpg', 'bàn nghế phòng khách', '23', '147', 1, '1.00', '04');
+('NC004', 'MH13', 'Nghế ngồi', 'IMGP2274_copy_thumb_400x600.jpg', 'bàn nghế phòng khách', '23', '147', 8, '1.00', '04'),
+('NC004', 'MH14', 'Nghế ngồi', 'imgp2300_copy_666x1000.jpg', 'bàn nghế phòng khách', '23', '147', 1, '1.00', '04'),
+('', 'MH01', 'Áo vest', 'imgp0912.jpg', 'Áo vest được làm từ chất liệu cao cấp...', '', '125', 10, '0.00', ''),
+('', 'MH15', 'Áo dài Việt Nam', 'imgp3645 copy-min.jpg', 'Áo dài Việt Nam được làm từ lụa tơ tằm cao cấp...', '', '236', 10, '0.00', ''),
+('', 'MH16', 'Áo khoác', 'imgp2272_copy_666x1000_thumb_403x599.jpg', 'Áo khoác được làm từ lông cừu cao cấp.', '', '320', 15, '0.00', ''),
+('', 'MH17', 'Áo da', 'imgp1376.jpg', 'Áo da được làm từ da cao cấp.', '', '320', 17, '0.00', ''),
+('', 'MH18', 'Áo da bò', 'alb_1482304118_902.jpg', 'làm từ da bò nguyên miếng', '', '125', 15, '0.00', ''),
+('', 'mh19', 'Quần Tây', 'imgp0912.jpg', 'Quần tây phù hơp với đàn ông', '', '230', 10, '0.00', '');
 
 -- --------------------------------------------------------
 
@@ -285,12 +278,9 @@ CREATE TABLE IF NOT EXISTS `members` (
 --
 
 INSERT INTO `members` (`id`, `level`, `HoTen`, `email`, `dienthoai`, `address`, `Name`, `TP`, `QuocGia`, `password`, `repassword`) VALUES
-(13, 1, 'Nhung', 'nhungthoi@gmail.com', '09808', 'Đại mỗ', '', 'HN', '', 'nhungham', ''),
-(11, 1, 'Thuc', 'dac_thuc@yahoo.com', '091923', 'qa', '', 'admin', '', '123', ''),
-(7, 2, 'Thuc', 'thuclfc@gmail.com', '01642546737', 'Từ sơn bắc ninh', '', 'admin', '', 'lfc', ''),
-(14, 1, 'Nhung Hâm', 'nhungham@gmail.com', '01696256892', 'Đại Mỗ', '', 'admin', '', 'nhung', ''),
-(15, NULL, 'thucnd', 'thucnd@gmail.com', '', '', '', '', '', '123456', ''),
-(16, NULL, 'ndthuc', 'ndthuc@gmail.com', '01642546328', '', '', '', '', '123456', '');
+(7, 2, 'Thuc Nguyen', 'thuclfc@gmail.com', '01696256892', 'tam lư - từ sơn', '', 'admin', '', 'lfc', ''),
+(1, 1, 'chinhdt', 'chinhthi@gmail.com', '01642546328', '', '', '', '', '123456789', ''),
+(15, 2, 'Thucnd', 'thucnd@gmail.com', '01642546328', 'Le Van Luong', '', '', '', '123456', '');
 
 -- --------------------------------------------------------
 
@@ -462,7 +452,7 @@ ALTER TABLE `nhanvien`
 -- AUTO_INCREMENT for table `dondathang`
 --
 ALTER TABLE `dondathang`
-  MODIFY `MaDDH` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=24;
+  MODIFY `MaDDH` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=26;
 --
 -- AUTO_INCREMENT for table `members`
 --

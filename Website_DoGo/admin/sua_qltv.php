@@ -40,7 +40,7 @@ padding-right:15px;
 		$tb = "Cập nhật thành công!";
         /* header("refresh:3;index.php");*/
 	}
-	$truyvan_qlsp = mysqli_query($conn,"SELECT id,level,HoTen,email,password FROM members WHERE  id = '$id_tv'");
+	$truyvan_qlsp = mysqli_query($conn,"SELECT id,level,HoTen,email,password,dienthoai,address FROM members WHERE  id = '$id_tv'");
 	
 	$r = mysqli_fetch_array($truyvan_qlsp);
 
