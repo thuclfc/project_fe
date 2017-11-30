@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="assets/css/slideshow5.css">
+</head>
+<body>
+<div class="wrapper">
+    <div class="box-slider">
+        <div class="sliders">
+            <div class="item">
+                <img src="assets/images/1.jpg" width="" alt="">
+            </div>
+            <div class="item">
+                <img src="assets/images/2.jpg" width="" alt="">
+            </div>
+            <div class="item">
+                <img src="assets/images/3.jpg" width="" alt="">
+            </div>
+            <div class="item">
+                <img src="assets/images/4.jpg" width="" alt="">
+            </div>
+            <div class="item">
+                <img src="assets/images/5.jpg" width="" alt="">
+            </div>
+            <div class="item">
+                <img src="assets/images/6.jpg" width="" alt="">
+            </div>
+
+        </div>
+        <ul class="pag"></ul>
+        <div class="nav">
+            <a href="javascript:void(0)" class="prev">prev</a>
+            <a href="javascript:void(0)" class="next">next</a>
+        </div>
+    </div>
+</div>
+<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script>
+    function box_slider(item,pag,slider,next_button,prev_button) {
+        $(''+item+':first-child').addClass('active');
+        var length_slider=$(item).length;
+        var with_slider=length_slider*$(item).width();
+        $(slider).css('width',with_slider);
+        var width_item=$(item).width();
+        var myvar = function () {
+            var index_item=$(''+item+'.active').index()+2;
+            var movie_slider=index_item*width_item;
+            interval = setInterval(function () {
+                if(movie_slider >= width_item*length_slider){
+                    movie_slider = 0;
+                }
+                if(index_item >= length_slider){
+                    index_item = 0;
+                }
+                $(item).removeClass('active');
+                $(pag).removeClass('active');
+                $(''+item+':eq('+index_item+')').addClass('active');
+                $(''+pag+':eq('+index_item+')').addClass('active');
+                $(slider).css('transform','translateX('+-movie_slider+'px)');
+                movie_slider +=width_item*2;
+                index_item+=2;
+            },3000);
+        };
+        myvar();
+        $(next_button).click(function () {
+            clearInterval(interval);
+            var active_item=$(''+item+'.active').index();
+            var movie_next=(active_item+1)*width_item;
+            if(movie_next >= width_item*length_slider){
+                movie_next=(width_item*length_slider) - width_item;
+            }
+            $(slider).css({'transform':'translateX('+-movie_next+'px)'});
+            $(''+item+'.active').next().addClass('active').prevAll().removeClass('active');
+            $(''+pag+'.active').next().addClass('active').prevAll().removeClass('active');
+            myvar();
+        });
+        $(prev_button).click(function () {
+            clearInterval(interval);
+            var active_item=$(''+item+'.active').index();
+            var movie_prev=(active_item-1)*width_item;
+            if(active_item == 0){
+                movie_prev = 0;
+            }
+            $(slider).css({'transform':'translateX('+-movie_prev+'px)'});
+            $(''+item+'.active').prev().addClass('active').nextAll().removeClass('active');
+            $(''+pag+'.active').prev().addClass('active').nextAll().removeClass('active');
+            myvar();
+        });
+        var k=0;
+        for(k=1; k<=length_slider; k++){
+            var data_img=$(''+item+':nth-child('+k+') img').attr('src');
+            $('.pag').append('<li><a href="#item'+k+'"><img src="'+data_img+'" width="100" height="50"></a></li>');
+        }
+        $(''+pag+':nth-child(1)').addClass('active');
+        $(pag).click(function () {
+            clearInterval(interval);
+            var pag_index=$(this).index();
+            $(item).removeClass('active');
+            $(pag).removeClass('active');
+            $(this).addClass('active');
+            $(''+item+':eq('+pag_index+')').addClass('active');
+            var movie_pag=pag_index * width_item;
+            $(slider).css({"transform":"translateX("+-movie_pag+"px)"});
+            myvar();
+        });
+    }
+    $(document).ready(function () {
+        box_slider('.sliders .item','.pag li','.sliders','.next','.prev');
+    });
+
+</script>
+</body>
+</html>

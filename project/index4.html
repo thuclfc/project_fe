@@ -36,50 +36,49 @@
 </div>
 <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
 <script>
-    $(document).ready(function () {
-        var item=$('.sliders .item');
+    function slider(item,pag,next,prev,pagp) {
         var length_item=$(item).length;
-        $('.sliders .item:first-child').addClass('active');
+        $(''+item+':first-child').addClass('active');
         var myvar = function () {
-            var i=$('.sliders .item.active').index();
-           interval = setInterval(function () {
-                if(i >= length_item){
-                    i = 0;
-                }
-                $('.sliders .item,.pag li').removeClass('active');
-                $('.sliders .item:eq('+i+'),.pag li:eq('+i+')').addClass('active');
-                i++;
+            var index_active=$(''+item+'.active').index()+1;
+            interval = setInterval(function () {
+                if(index_active >= length_item){index_active=0;}
+                $(item).removeClass('active');
+                $(pag).removeClass('active');
+                $(''+item+':eq('+index_active+')').addClass('active');
+                $(''+pag+':eq('+index_active+')').addClass('active');
+                index_active++;
             },4000);
         };
         myvar();
-        function nextSlide(button) {
-            $(button).click(function () {
-                clearInterval(interval);
-                $('.sliders .item.active,.pag li.active').next().addClass('active').prevAll().removeClass('active');
-                myvar();
-            });
-        }
-        function preveSlide(button) {
-            $(button).click(function () {
-                clearInterval(interval);
-                $('.sliders .item.active,.pag li.active').prev().addClass('active').nextAll().removeClass('active');
-                myvar();
-            });
-        }
-        nextSlide('a.next'); preveSlide('a.prev');
-        var k=0;
-        for(k=1; k<=length_item; k++){
-            $('.pag').append('<li><a href="#item'+k+'">'+k+'</a></li>');
-        }
-        $('.pag li:nth-child(1)').addClass('active');
-        $('.pag li').click(function(){
-            clearInterval(interval);
-           var index_li=$(this).index();
-           $('.sliders .item,.pag li').removeClass('active');
-           $(this).addClass('active');
-           $('.sliders .item:eq('+index_li+')').addClass('active');
+        $(next).click(function () {
+           clearInterval(interval);
+           $(''+item+'.active').next().addClass('active').prevAll().removeClass('active');
+            $(''+pag+'.active').next().addClass('active').prevAll().removeClass('active');
            myvar();
         });
+        $(prev).click(function () {
+           clearInterval(interval);
+            $(''+item+'.active').prev().addClass('active').nextAll().removeClass('active');
+            $(''+pag+'.active').prev().addClass('active').nextAll().removeClass('active');
+            myvar();
+        });
+        var k=0;
+        for(k=1; k<=length_item; k++){
+            $(pagp).append('<li><a href="#item'+k+'">'+k+'</a></li>');
+        }
+        $(''+pag+':nth-child(1)').addClass('active');
+        $(pag).click(function () {
+            clearInterval(interval);
+            var index_it=$(this).index();
+            $(item).removeClass('active'); $(pag).removeClass('active');
+            $(this).addClass('active');
+            $(''+item+':eq('+index_it+')').addClass('active');
+            myvar()
+        });
+    }
+    $(document).ready(function () {
+        slider('.sliders .item','.pag li','.next','.prev','.pag');
     });
 </script>
 </body>
