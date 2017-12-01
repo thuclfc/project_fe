@@ -7,113 +7,63 @@
 </head>
 <body>
 <div class="wrapper">
-    <div class="box-slider">
-        <div class="sliders">
-            <div class="item">
-                <img src="assets/images/1.jpg" width="600" alt="">
-            </div>
-            <div class="item">
-                <img src="assets/images/2.jpg" width="600" alt="">
-            </div>
-            <div class="item">
-                <img src="assets/images/3.jpg" width="600" alt="">
-            </div>
-            <div class="item">
-                <img src="assets/images/4.jpg" width="600" alt="">
-            </div>
-            <div class="item">
-                <img src="assets/images/5.jpg" width="600" alt="">
-            </div>
-            <div class="item">
-                <img src="assets/images/6.jpg" width="600" alt="">
-            </div>
-            <div class="item">
-                <img src="assets/images/3.jpg" width="600" alt="">
-            </div>
-            <div class="item">
-                <img src="assets/images/4.jpg" width="600" alt="">
-            </div>
-            <div class="item">
-                <img src="assets/images/3.jpg" width="600" alt="">
-            </div>
+    <div class="full_page">
+        <div class="page page1 active">
+            <span>1</span>
         </div>
-        <ul class="pag"></ul>
-        <div class="nav">
-            <a href="javascript:void(0)" class="prev">prev</a>
-            <a href="javascript:void(0)" class="next">next</a>
+        <div class="page page2">
+            <span>2</span>
+        </div>
+        <div class="page page3">
+            <span>3</span>
+        </div>
+        <div class="page page4">
+            <span>4</span>
         </div>
     </div>
 </div>
 <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
 <script>
-    $(document).ready(function () {
-        $('.sliders .item:nth-child(3)').addClass('active');
-        var item=$('.sliders .item');
-        var length_item=$(item).length;
-        var width_slider=length_item*$('.box-slider .item').width();
-        $('.sliders').css('width',width_slider);
-        var item_width=$(item).width();
-        var myvar = function () {
-            var x=$('.sliders .item.active').index()+1;
-            var item_ac=$('.sliders .item.active').index();
-            var i=(item_ac-1)*item_width;
-            interval = setInterval(function () {
-                if(i >= (item_width*length_item)/3){
-                    i = 0;
-                }
-                if(x >= length_item){
-                    x=0;
-                }
-                var y=x+3;
-                $('.sliders .item,.pag li').removeClass('active');
-                $('.sliders .item:nth-child('+y+'),.pag li:nth-child('+y+')').addClass('active');
-                $(".sliders").css({"transform":"translateX("+-i*3+"px)"});
-                i +=item_width;
-                x+=3;
-            },3000);
-        };
-        myvar();
-        function nextSlide(button) {
-            $(button).click(function () {
-                clearInterval(interval);
-                var item_active=$('.sliders .item.active').index();
-                var item_next=(item_active+1)*item_width;
-                if(item_next >= (item_width*length_item)){
-                    item_next = (item_width*length_item)-item_width*3;
-                }
-                $(".sliders").css({"transform":"translateX("+-item_next+"px)"});
-                $('.sliders .item:nth-child('+(item_active+3)+'),.pag li:nth-child('+(item_active+3)+')').next().addClass('active').prevAll().removeClass('active');
-
-            });
+    $(function () {
+        var height_page=$('.page').height();
+        var leng_page=$('.page').length;
+       var mydown = function down() {
+            var index_page=$('.page.active').index()+1;
+            var movie_up=(index_page * height_page) - 2*height_page;
+            if(index_page==1){
+                movie_up=0;
+            }
+            $('.page.active').prev().addClass('active').nextAll().removeClass('active');
+            $('.full_page').css('transform','translateY('+-movie_up+'px)');
         }
-        function preveSlide(button) {
-            $(button).click(function () {
-                clearInterval(interval);
-                var item_active=$('.sliders .item.active').index();
-                var item_next=((item_active-2)*item_width) - (item_width*3);
 
-                $(".sliders").css({"transform":"translateX("+-item_next+"px)"});
-                $('.sliders .item:nth-child('+(item_active-1)+'),.pag li:nth-child('+(item_active)+')').prev().addClass('active').nextAll().removeClass('active');
-
-            });
+      var myup = function up() {
+            var index_page1=$('.page.active').index()+1;
+            var movie_down=index_page1 * height_page
+            if(movie_down >= leng_page*height_page){
+                movie_down=0;
+            }
+            if(index_page1 >= leng_page){
+                index_page1=0;
+            }
+            $('.page').removeClass('active');
+            $('.page:eq('+index_page1+')').addClass('active');
+            $('.full_page').css('transform','translateY('+-movie_down+'px)');
         }
-        nextSlide('a.next'); preveSlide('a.prev');
 
-        var k=0;
-        for(k=1; k<=length_item; k++){
-            $('.pag').append('<li><a href="#item'+k+'">'+k+'</a></li>');
-        }
-        $('.pag li:nth-child(1)').addClass('active');
-        $('.pag li').click(function(){
-            clearInterval(interval);
-            var index_li=$(this).index();
-            $('.sliders .item,.pag li').removeClass('active');
-            $(this).addClass('active');
-            $('.sliders .item:eq('+index_li+')').addClass('active');
-            var xt=(index_li)*item_width;
-            $(".sliders").css({"transform":"translateX("+-xt+"px)"});
-            myvar();
+        $(window).bind('mousewheel', function(event) {
+            if (event.originalEvent.wheelDelta >= 50) {
+                $(window).on('mousewheel');
+                mydown();
+                $(window).off('mousewheel');
+            }
+            else if(event.originalEvent.wheelDelta <= 50){
+                $(window).on('mousewheel');
+                myup();
+                $(window).off('mousewheel');
+            }
         });
+
     });
 </script>
 </body>

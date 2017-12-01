@@ -45,7 +45,7 @@
         $(slider).css('width',with_slider);
         var width_item=$(item).width();
         var myvar = function () {
-            var index_item=$(''+item+'.active').index()+2;
+            var index_item=$(''+item+'.active').index()+3;
             var movie_slider=index_item*width_item;
             interval = setInterval(function () {
                 if(movie_slider >= width_item*length_slider){
@@ -59,8 +59,8 @@
                 $(''+item+':eq('+index_item+')').addClass('active');
                 $(''+pag+':eq('+index_item+')').addClass('active');
                 $(slider).css('transform','translateX('+-movie_slider+'px)');
-                movie_slider +=width_item*2;
-                index_item+=2;
+                movie_slider +=width_item*3;
+                index_item+=3;
             },3000);
         };
         myvar();
