@@ -4,53 +4,19 @@
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
-<style>
-#accordion div{}
-</style>
 <body>
-<div class="wrapper" style="min-height: 1200px;">
-    <div class="slider">
-        <p>1</p>
-        <p>2</p>
-        <p>3</p>
-        <p>4</p>
-        <a href="javascript:void(0)" class="onn">on</a>
-        <a href="javascript:void(0)" class="off">off</a>
+<div class="wrapper">
+    <h2>this is anfid</h2>
+    <p>
+        lfc fan
+        lf
+    </p>
+    <div class="progress" style="display: block; width: 200px; height: 1rem; background: #ccc;">
+        <div class="progress-bar" style="display: block; height: 100%; background: #c00;"></div>
+
     </div>
-    <div id="accordion">
-        <h3>1</h3>
-        <div>1.1</div>
-        <h3>2</h3>
-        <div>2.2</div>
-    </div>
+    <i style="display: block; border-width: 16px; border-color: transparent;
+    border-style: solid;"></i>
 </div>
-<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
-<script>
-    function clickp(p) {
-        $(p).click(function () {
-           $(this).css('background','#333');
-        });
-    }
-    clickp('p');
-    $('.onn').click(function () {
-       $('p').on('click',function () {
-           $(this).css('background','#333');
-       });
-    });
-    $('.off').click(function () {
-        $('p').off('click');
-    });
-
-
-
-    $('#accordion div').slideUp();
-    $('#accordion h3').click(function () {
-        $('#accordion h3').removeClass('active');
-        $('#accordion div').slideUp();
-        $(this).addClass('active');
-       $('h3.active + div').slideDown();
-    });
-    $( "#accordion" ).accordion();
-</script>
 </body>
 </html>

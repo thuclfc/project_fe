@@ -13,7 +13,9 @@ html, body {
 
 .full_page {
   height: 400%;
-  transition: 1s; }
+  transition: all 1000ms ease;
+  touch-action: none;
+  position: relative; }
 
 .page {
   width: 100%;
@@ -31,3 +33,6 @@ html, body {
 
 .page4 {
   background: #999; }
+
+.page5 {
+  background: #333; }

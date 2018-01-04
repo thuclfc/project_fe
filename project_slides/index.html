@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="assets/css/slideshow4.css">
+</head>
+<body>
+<div class="wrapper">
+    <div class="full_page">
+        <div class="page page1 active">
+            <span>1</span>
+        </div>
+        <div class="page page2">
+            <span>2</span>
+        </div>
+        <div class="page page3">
+            <span>3</span>
+        </div>
+        <div class="page page4">
+            <span>4</span>
+        </div>
+        <div class="page page5">
+            <span>4</span>
+        </div>
+    </div>
+</div>
+<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script>
+    $(function () {
+        var height_page=$('.page').height();
+        var leng_page=$('.page').length;
+       var mydown = function down() {
+            var index_page=$('.page.active').index()+1;
+            var movie_up=(index_page * height_page) - 2*height_page;
+            if(index_page==1){
+                movie_up=0;
+            }
+            $('.page.active').prev().addClass('active').nextAll().removeClass('active');
+            $('.full_page').css('transform','translate3d(0,'+-movie_up+'px,0)');
+            $(window).off('mousewheel');
+        }
+
+      var myup = function() {
+           var index_page1=$('.page.active').index()+1;
+           var movie_down=index_page1 * height_page;
+           if(movie_down >= leng_page*height_page){
+               movie_down=0;
+           }
+           if(index_page1 >= leng_page){
+               index_page1=0;
+           }
+           $('.page').removeClass('active');
+           $('.page:eq('+index_page1+')').addClass('active');
+           $('.full_page').css('transform','translate3d(0,'+-movie_down+'px,0)');
+           alert();
+
+        };
+
+        $(window).bind('mousewheel',function (event) {
+            if (event.originalEvent.wheelDelta >= 0) {
+                mydown();
+            }
+            else if(event.originalEvent.wheelDelta <= 0){
+                myup();
+            }
+        });
+
+
+    });
+</script>
+</body>
+</html>

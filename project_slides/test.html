@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .slider-level{width: 865px; position: relative;}
+        #showcase {
+            width: 1200px;
+            height: 450px;
+            border-radius: 8px;
+            margin: auto;
+            visibility: visible;
+            overflow: visible !important; margin-left: -100px;
+        }
+        #showcase img {
+            cursor: pointer;
+            max-width: 80%; display: block; margin: 0 auto;
+        }
+    </style>
+</head>
+<style>
+#accordion div{}
+</style>
+<body>
+<div class="wrapper" style="">
+    <div id="showcase" class="slider-level">
+        <img class="cloud9-item" src="https://sohagame.vcmedia.vn/public/sg198/daikieu3.png" alt="">
+        <img class="cloud9-item" src="https://sohagame.vcmedia.vn/project/m/sg180/pc/images/landing/nv/nv1-l1.png" alt="">
+        <img class="cloud9-item" src="https://sohagame.vcmedia.vn/project/m/sg180/pc/images/landing/nv/nv1-l2.png" alt="">
+    </div>
+</div>
+<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="assets/js/jquery.cloud9carousel.min.js"></script>
+<script>
+    $(function () {
+        var showcase = $("#showcase");
+        var img = $("#showcase").find('img');
+        var item = $(".next-slider .item a img");
+        showcase.height(391);
+        showcase.Cloud9Carousel({
+            yPos: 22,
+            yRadius: 0,
+            speed: 1.5,
+            smooth: true,
+            farScale: 0.3,
+            transforms: true,
+            autoPlayDelay: 2000,
+            buttonLeft: $(".nav > .left"),
+            buttonRight: $(".nav > .right"),
+            autoPlay: true,
+            bringToFront: true,
+            onLoaded: function () {
+                showcase.css({'visibility': 'visible', 'overflow': 'visible'});
+                showcase.css('display', 'none');
+                showcase.fadeIn(1500);
+            }
+        });
+    });
+</script>
+</body>
+</html>
