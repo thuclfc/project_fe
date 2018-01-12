@@ -184,16 +184,6 @@ canvas {
   display: inline-block;
 }
 
-
-@font-face {
-  font-family: copper;
-  src: url(../font/CooperBlackStd.otf);
-}
-
-@font-face {
-  font-family: khuccamta;
-  src: url(../font/UTMKhuccamta.ttf);
-}
 %hover{-webkit-filter: saturate(2.2); filter: saturate(2.2);}
 .container{
   width: 100%; padding: 0 15px; margin: 0 auto; position: relative;
@@ -686,7 +676,7 @@ footer{
 }
 
 
-@media (min-width: 320px) and (max-width: 768px) {
+@media (min-width: 320px) and (max-width: 1200px) {
   .header_top{
     height: auto; padding: 5px 0;
     .eng_ver{padding: 5px 0;}
@@ -732,8 +722,11 @@ footer{
     .header{padding: 15px 0;}
     .intro_content{
       .video_intro,article{width: 100%}
-      .video_intro{height: 280px;}
-      article p{font-size: 14px; line-height: 22px;}
+      .video_intro{height: 240px;}
+      article{
+        margin-top: 10px;
+        p{font-size: 14px; line-height: 22px;}
+      }
     }
     .destinations{
       .des_post{flex-direction: column;}
@@ -776,8 +769,20 @@ footer{
     .col{width: 100%;}
   }
 }
-@media (min-width: 576) and (max-width: 768px) {
-
+@media (min-width: 576px) and (max-width: 1200px) {
+  main{
+    .destinations .des_post{flex-direction: row;}
+    .tours .post{width: 80%; margin: 0 auto 30px;}
+  }
+}
+@media (min-width: 768px) and (max-width: 1200px) {
+  main{
+    .tours .post{width: 46%; margin: 0 auto 30px;}
+    .intro_content{
+      .video_intro,article{width: 48%}
+      .video_intro{height: 280px;}
+    }
+  }
 }
 
 
